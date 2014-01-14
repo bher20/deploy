@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="1571074919">
+    <data-source source="LOCAL" name="Rails deploy: development" uuid="32e94323-5d85-4e6b-ad79-339f15fe361b">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:deploy_development</jdbc-url>
+      <user-name>deploy_user</user-name>
+      <user-password>dfd3df9edf9edfc3dfc6dfe8dfe4dfdcdffadfdcdfdadfe7df9ddfc7dff9df98</user-password>
+      <libraries>
+        <library>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/postgresql-9.2-1002.jdbc3.jar</url>
+        </library>
+      </libraries>
+    </data-source>
+    <data-source source="LOCAL" name="Rails deploy: test" uuid="73273fc5-64ed-46ac-a9bf-b4cf66f28b2e">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:deploy_test</jdbc-url>
+      <user-name>deploy_user</user-name>
+      <user-password>dfd3df9edf9edfc3dfc6dfe8dfe4dfdcdffadfdcdfdadfe7df9ddfc7dff9df98</user-password>
+      <libraries>
+        <library>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/postgresql-9.2-1002.jdbc3.jar</url>
+        </library>
+      </libraries>
+    </data-source>
+    <data-source source="LOCAL" name="Rails deploy: production" uuid="e2fd9337-8e0b-44d7-8570-83ac758824c4">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:deploy_production</jdbc-url>
+      <user-name>deploy_user</user-name>
+      <user-password>dfd3df9edf9edfc3dfc6dfe8dfe4dfdcdffadfdcdfdadfe7df9ddfc7dff9df98</user-password>
+      <libraries>
+        <library>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/postgresql-9.2-1002.jdbc3.jar</url>
+        </library>
+      </libraries>
+    </data-source>
+  </component>
+</project>
+

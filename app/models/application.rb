@@ -6,4 +6,5 @@ class Application < ActiveRecord::Base
   validates :script, :attachment_presence => true
 
   has_many :environments
+  has_many :app_deployments
 end

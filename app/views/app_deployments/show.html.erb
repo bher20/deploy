@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @application.name %>
+</p>
+
+<p>
+  <b>Script:</b>
+  <%= link_to @application.script_file_name, @application.script.url %>
+</p>
+
+<p>
+  <b>Repository:</b>
+  <%= @application.repository %>
+</p>
+
+<%= link_to 'Edit', edit_app_deployment_path(@app_deployment) %> |
+<%= link_to 'Back', app_deployments_path %>

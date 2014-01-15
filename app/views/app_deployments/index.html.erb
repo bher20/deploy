@@ -1,0 +1,25 @@
+<h1>Listing app_deployments</h1>
+
+<table>
+  <tr>
+    <th><%= t('app_deployments.version') %></th>
+    <th><%= t('app_deployments.path') %></th>
+    <th><%= t('general.actions') %></th>
+  </tr>
+
+<% @app_deployments.each do |app_deployment| %>
+  <tr>
+    <td><%= app_deployment.version %></td>
+    <td><%= link_to app_deployment.deployment_file_name, app_deployment.deployment.url %></td>
+    <td>
+      <%= link_to 'Show', app_deployment %>
+      <%= link_to 'Edit', edit_app_deployment_path(app_deployment) %>
+      <%= link_to 'Destroy', app_deployment, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New App deployment', new_app_deployment_path %>

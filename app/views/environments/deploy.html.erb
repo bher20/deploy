@@ -1,0 +1,27 @@
+<h1><%= t('environment.push_deployment') %></h1>
+
+<%= form_for(@environment, :html => { :multipart => true }) do |f| %>
+    <div class="field">
+      <%= f.label :application %><br />
+      <%= @environment.application.name %>
+    </div>
+    <div class="field">
+      <%= f.label :environment %><br />
+      <%= @environment.name %>
+    </div>
+    <div class="field">
+      <%= f.label :path%><br />
+      <%= @environment.path %>
+    </div>
+    <div class="field">
+      <%= f.label :deployment%><br />
+      <%= f.file_field :deployment %>
+    </div>
+    <div class="field">
+      <%= f.label :deployment_version%><br />
+      <%= f.text_field :deployment_version %>
+    </div>
+    <div class="actions">
+      <%= f.submit t('environment.push_deployment') %>
+    </div>
+<% end %>

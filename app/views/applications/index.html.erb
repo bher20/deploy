@@ -5,19 +5,20 @@
     <th>Name</th>
     <th>Script</th>
     <th>Repository</th>
-    <th></th>
+    <th>Actions</th>
     <th></th>
     <th></th>
   </tr>
 
 <% @applications.each do |application| %>
   <tr>
-    <td><%= application.name %></td>
-    <td><%= application.script %></td>
+    <td><%= link_to application.name, application %></td>
+    <td><%= link_to application.script_file_name, application.script.url %></td>
     <td><%= application.repository %></td>
-    <td><%= link_to 'Show', application %></td>
-    <td><%= link_to 'Edit', edit_application_path(application) %></td>
-    <td><%= link_to 'Destroy', application, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td>
+      <%= link_to 'Edit', edit_application_path(application) %>
+      <%= link_to 'Destroy', application, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </td>
   </tr>
 <% end %>
 </table>

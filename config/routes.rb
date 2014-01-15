@@ -1,9 +1,18 @@
 Deploy::Application.routes.draw do
+
+
   root :to => 'applications#index'
 
+  resources :app_deployments do
+    member do
+      post :deploy
+    end
+  end
   resources :environments
+
   resources :applications do
     resources :environments
+    resources :app_deployments
   end
 
 

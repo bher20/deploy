@@ -1,5 +1,5 @@
 class EnvironmentsController < ApplicationController
-  before_filter :load_application, :except => [:destroy, :show, :index, :edit, :update]
+  before_filter :load_application, :only => [:new, :create]
 
   # GET /environments
   # GET /environments.json
@@ -78,6 +78,13 @@ class EnvironmentsController < ApplicationController
       format.html { redirect_to @application.application_url, :notice => t('environments.destroy_success') }
       format.js
     end
+  end
+
+  def deploy
+    @environment = Environment.find(params[:id])
+
+    puts 'Test'
+    #@environment.deploy
   end
 
   private

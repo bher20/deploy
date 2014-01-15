@@ -1,0 +1,17 @@
+<h1><%= link_to @environment.application.name, @environment.application%></h1>
+
+<div class="show_form">
+  <b><%= t('environment.name') %></b>
+  <%= @environment.name %>
+  <br />
+  <b><%= t('environment.path') %></b>
+  <%= @environment.path %>
+  <br />
+  <b>Created On:</b>
+  <%= @environment.created_at.strftime("%m/%d/%Y %I:%M:%S %p") %>
+</div>
+<br />
+<br />
+
+<%= link_to 'Edit', edit_environment_path(@environment) %> |
+<%= link_to 'Back', @environment.application %>

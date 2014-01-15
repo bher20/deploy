@@ -3,3 +3,18 @@
 
 en:
   hello: "Hello world"
+  application:
+    environment: "Environment"
+    path: "Path"
+  general:
+    editing: "Editing"
+    delete: "Delete"
+    are_you_sure: "Are you sure?"
+  environment:
+    name: "Name"
+    path: "Path"
+    create_success: Environment was successfully created.
+    create_failure: Unable to add environment.
+    update_success: Environment was successfully updated.
+    destroy_success: Environment deleted.
+    environments: "Environments"

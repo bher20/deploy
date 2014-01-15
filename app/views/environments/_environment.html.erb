@@ -1,0 +1,9 @@
+<tr id="environment_<%= environment.id%>">
+  <td><%= link_to environment.name, environment %></td>
+  <td><%= environment.path %></td>
+  <td><%= environment.created_at.strftime("%m/%d/%Y %I:%M:%S %p") %></td>
+  <td>
+    <%= link_to t('general.delete'), [@application, environment], :confirm => t('general.are_you_sure'),
+                :method => :delete, :remote => true %>
+  </td>
+<tr>

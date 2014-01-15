@@ -1,0 +1,6 @@
+<%= form_for([@application, @application.environments.new], :remote => true,
+             :html => {:style => 'display: none;'}) do |f| %>
+    <%= render 'form' %>
+<% end %>
+<br />
+<br />

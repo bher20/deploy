@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @application.name %>
+</p>
+
+<p>
+  <b>Script:</b>
+  <%= link_to @application.script_file_name, @application.script.url %>
+</p>
+
+<p>
+  <b>Repository:</b>
+  <%= @application.repository %>
+</p>
+
+<h3><%= t('environment.environments') %>:
+        <span class='actions'>
+          <%= link_to 'New', new_application_environment_path(@application, :format => :js),
+                      :remote => true, :id => 'new_environment_link' %>
+        </span>
+</h3>
+<div class="environments">
+  <table>
+    <tr>
+      <th><%= t('environment.name') %></th>
+      <th><%= t('environment.path') %></th>
+      <th><%= t('general.actions') %></th>
+    </tr>
+    <%= render @application.environments %>
+  </table>
+</div>
+
+
+<%= link_to 'Edit', edit_application_path(@application) %> |
+<%= link_to 'Back', applications_path %>

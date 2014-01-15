@@ -1,0 +1,45 @@
+<%= form_for(@application, :html => { :multipart => true }) do |f| %>
+  <% if @application.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@application.errors.count, "error") %> prohibited this application from being saved:</h2>
+
+      <ul>
+      <% @application.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :script %><br />
+    <%= f.file_field :script %>
+  </div>
+  <div class="field">
+    <%= f.label :repository %><br />
+    <%= f.text_field :repository %>
+  </div>
+  <div class="field">
+    <%= f.label :environments %><br />
+    <table class="datatable">
+      <tr>
+        <th><%= t('application.environment') %></th>
+        <th><%= t('application.path') %></th>
+      </tr>
+
+      <% @application.environments.each do |e| %>
+          <tr>
+            <td><%= e[:name] %></td>
+            <td><%= e[:path] %></td>
+          </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

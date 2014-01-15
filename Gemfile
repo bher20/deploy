@@ -38,3 +38,5 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 gem 'deployer'
+gem 'git'
+gem 'paperclip', '~> 3.0'

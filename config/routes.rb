@@ -1,4 +1,12 @@
 Deploy::Application.routes.draw do
+  root :to => 'applications#index'
+
+  resources :environments
+  resources :applications do
+    resources :environments
+  end
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

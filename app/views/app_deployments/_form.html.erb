@@ -1,4 +1,4 @@
-<%= form_for(@app_deployment) do |f| %>
+<%= form_for([@application, @application.app_deployments.new]) do |f| %>
   <% if @app_deployment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@app_deployment.errors.count, "error") %> prohibited this app_deployment from being saved:</h2>

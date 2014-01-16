@@ -6,11 +6,14 @@ en:
   application:
     environment: "Environment"
     path: "Path"
+    deployment_script: "Deployment Script"
+    repository: "Repository"
   general:
     editing: "Editing"
     delete: "Delete"
     are_you_sure: "Are you sure?"
     actions: "Actions"
+    new: "New"
   environment:
     name: "Name"
     path: "Path"
@@ -28,3 +31,6 @@ en:
   app_deployments:
     version: "Version"
     path: "Path"
+    deploy: "Deploy"
+    deployments: "Deployments"
+    archive: "Archive"

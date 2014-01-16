@@ -1,5 +1,5 @@
 class AppDeployment < ActiveRecord::Base
-  attr_accessible :version, :environment_id, :deployment
+  attr_accessible :version, :deployment
 
   has_attached_file :deployment
 
@@ -7,4 +7,9 @@ class AppDeployment < ActiveRecord::Base
 
   belongs_to :application
 
+
+  def deploy(environment)
+    puts environment
+    #TODO: Use Deployer gem to deploy code.
+  end
 end

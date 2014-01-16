@@ -80,13 +80,6 @@ class EnvironmentsController < ApplicationController
     end
   end
 
-  def deploy
-    @environment = Environment.find(params[:id])
-
-    puts 'Test'
-    #@environment.deploy
-  end
-
   private
   def load_application
     @application = Application.find(params[:application_id])

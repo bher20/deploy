@@ -1,37 +1,51 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @application.name %>
-</p>
+<h1><%= @application.name %></h1>
 
 <p>
-  <b>Script:</b>
+  <b><%= t('application.deployment_script') %>:</b>
   <%= link_to @application.script_file_name, @application.script.url %>
 </p>
 
 <p>
-  <b>Repository:</b>
+  <b><%= t('application.repository') %>:</b>
   <%= @application.repository %>
 </p>
-
+<br />
 <h3><%= t('environment.environments') %>:
         <span class='actions'>
-          <%= link_to 'New', new_application_environment_path(@application, :format => :js),
+          <%= link_to t('general.new'), new_application_environment_path(@application, :format => :js),
                       :remote => true, :id => 'new_environment_link' %>
         </span>
 </h3>
 <div class="environments">
-  <table>
-    <tr>
-      <th><%= t('environment.name') %></th>
-      <th><%= t('environment.path') %></th>
-      <th><%= t('general.actions') %></th>
-    </tr>
-    <%= render @application.environments %>
-  </table>
+<table>
+<tr>
+  <th><%= t('environment.name') %></th>
+  <th><%= t('environment.path') %></th>
+  <th><%= t('general.actions') %></th>
+</tr>
+<%= render @application.environments %>
+</table>
 </div>
-
-
+<br />
+<h3><%= t('app_deployments.deployments') %>:
+    <span class='actions'>
+      <%= link_to t('general.new'), new_application_app_deployment_path(@application), :id => 'new_app_deployment_link' %>
+    </span>
+</h3>
+<div class="deployments">
+<table>
+  <tr>
+    <th><%= t('app_deployments.version') %></th>
+    <th><%= t('app_deployments.archive') %></th>
+    <th><%= t('general.actions') %></th>
+  </tr>
+  <%= render @application.app_deployments %>
+</table>
+</div>
+<br />
+<br />
+<br />
 <%= link_to 'Edit', edit_application_path(@application) %> |
 <%= link_to 'Back', applications_path %>

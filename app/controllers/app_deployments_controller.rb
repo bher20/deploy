@@ -1,4 +1,6 @@
 class AppDeploymentsController < ApplicationController
+  before_filter :load_application, :only => [:new, :create]
+
   # GET /app_deployments
   # GET /app_deployments.json
   def index
@@ -14,6 +16,7 @@ class AppDeploymentsController < ApplicationController
   # GET /app_deployments/1.json
   def show
     @app_deployment = AppDeployment.find(params[:id])
+    @application = @app_deployment.application
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +27,7 @@ class AppDeploymentsController < ApplicationController
   # GET /app_deployments/new
   # GET /app_deployments/new.json
   def new
-    @app_deployment = AppDeployment.new
+    @app_deployment = @application.app_deployments.new(params[:app_deployment])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,7 +43,7 @@ class AppDeploymentsController < ApplicationController
   # POST /app_deployments
   # POST /app_deployments.json
   def create
-    @app_deployment = AppDeployment.new(params[:app_deployment])
+    @app_deployment = @application.app_deployments.new(params[:app_deployment])
 
     respond_to do |format|
       if @app_deployment.save
@@ -79,5 +82,16 @@ class AppDeploymentsController < ApplicationController
       format.html { redirect_to app_deployments_url }
       format.json { head :no_content }
     end
+  end
+
+  def deploy
+    @app_deployment = AppDeployment.find(params[:id])
+
+    @app_deployment.deploy Environment.find(params[:environment])
+  end
+
+  private
+  def load_application
+    @application = Application.find(params[:application_id])
   end
 end

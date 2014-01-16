@@ -1,19 +1,28 @@
-<p id="notice"><%= notice %></p>
+<h1>Deployment</h1>
 
 <p>
-  <b>Name:</b>
-  <%= @application.name %>
+  <b>Application:</b>
+  <%= link_to @application.name, @application %>
 </p>
 
 <p>
-  <b>Script:</b>
-  <%= link_to @application.script_file_name, @application.script.url %>
+  <b>Version:</b>
+  <%= @app_deployment.version %>
 </p>
 
 <p>
-  <b>Repository:</b>
-  <%= @application.repository %>
+  <b>Archive:</b>
+  <%= link_to @app_deployment.deployment_file_name, @app_deployment.deployment.url %>
 </p>
 
+<p>
+  <h3>Deploy Update into:</h3>
+  <% @application.environments.each do |e| %>
+    <%= link_to e.name, deploy_app_deployment_path(environment: e), :method => :post %><br />
+  <% end %>
+</p>
+
+<br />
+<br />
 <%= link_to 'Edit', edit_app_deployment_path(@app_deployment) %> |
 <%= link_to 'Back', app_deployments_path %>

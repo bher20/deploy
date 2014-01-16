@@ -1,17 +1,6 @@
 class AppDeploymentsController < ApplicationController
   before_filter :load_application, :only => [:new, :create]
 
-  # GET /app_deployments
-  # GET /app_deployments.json
-  def index
-    @app_deployments = AppDeployment.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @app_deployments }
-    end
-  end
-
   # GET /app_deployments/1
   # GET /app_deployments/1.json
   def show

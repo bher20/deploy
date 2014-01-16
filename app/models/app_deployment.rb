@@ -8,8 +8,17 @@ class AppDeployment < ActiveRecord::Base
   belongs_to :application
 
 
-  def deploy(environment)
-    puts environment
-    #TODO: Use Deployer gem to deploy code.
+  def deploy_application(environment)
+    logger.debug "Deploying #{self.deployment_file_name} into #{environment.name} for #{application.name}."
+
+    deployment = Deployment.new environment.path, application.repository, self.version, application.name, Rails.logger
+
+    require_relative self.application.script.path
+
+    time_stamp = Time.now.strftime("%Y-%m-%d%H_%M_%S")
+    temp_dir = Rails.root.join('tmp', "#{time_stamp}-#{application.name}-archive")
+    deploy ({ :temp_dir => temp_dir, :deploy_file => self.deployment.path, :environment => environment.name })
+
+    deployment.deploy temp_dir, Rails.root.join('tmp', application.name)
   end
 end

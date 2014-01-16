@@ -34,3 +34,4 @@ en:
     deploy: "Deploy"
     deployments: "Deployments"
     archive: "Archive"
+    no_new_files: "No new files in deployment package, stopping deployment!"

@@ -88,7 +88,15 @@ class AppDeploymentsController < ApplicationController
   def deploy
     @app_deployment = AppDeployment.find(params[:id])
 
-    @app_deployment.deploy Environment.find(params[:environment])
+    begin
+      @app_deployment.deploy_application Environment.find(params[:environment])
+
+    rescue Git::GitExecuteError
+      @app_deployment.errors.add(:base, t('app_deployments.no_new_files'))
+      respond_to do |format|
+        format.js { render 'fail_deployment.js.erb' }
+      end
+    end
   end
 
   private

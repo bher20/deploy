@@ -18,7 +18,7 @@
 <p>
   <h3>Deploy Update into:</h3>
   <% @application.environments.each do |e| %>
-    <%= link_to e.name, deploy_app_deployment_path(environment: e), :method => :post %><br />
+    <%= link_to e.name, deploy_app_deployment_path(environment: e), :method => :post, :remote => true %><br />
   <% end %>
 </p>
 

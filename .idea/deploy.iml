@@ -163,6 +163,7 @@
     <orderEntry type="library" scope="PROVIDED" name="activerecord (v3.2.13, RVM: ruby-2.0.0-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activeresource (v3.2.13, RVM: ruby-2.0.0-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activesupport (v3.2.13, RVM: ruby-2.0.0-p195) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="archive-zip (v0.6.0, RVM: ruby-2.0.0-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="arel (v3.0.3, RVM: ruby-2.0.0-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="builder (v3.0.4, RVM: ruby-2.0.0-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bundler (v1.3.5, RVM: ruby-2.0.0-p195) [gem]" level="application" />
@@ -171,12 +172,13 @@
     <orderEntry type="library" scope="PROVIDED" name="coffee-rails (v3.2.2, RVM: ruby-2.0.0-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="coffee-script (v2.2.0, RVM: ruby-2.0.0-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="coffee-script-source (v1.6.3, RVM: ruby-2.0.0-p195) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="deployer (v0.0.1, RVM: ruby-2.0.0-p195) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="deployer (v0.0.4, RVM: ruby-2.0.0-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubis (v2.7.0, RVM: ruby-2.0.0-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="execjs (v2.0.2, RVM: ruby-2.0.0-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="git (v1.2.6, RVM: ruby-2.0.0-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="hike (v1.2.3, RVM: ruby-2.0.0-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v0.6.1, RVM: ruby-2.0.0-p195) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="io-like (v0.3.0, RVM: ruby-2.0.0-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="journey (v1.0.4, RVM: ruby-2.0.0-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jquery-rails (v3.0.4, RVM: ruby-2.0.0-p195) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="json (v1.8.1, RVM: ruby-2.0.0-p195) [gem]" level="application" />

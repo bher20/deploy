@@ -3,6 +3,7 @@ Deploy::Application.routes.draw do
 
   root :to => 'applications#index'
 
+  resources :deployment_logs
   resources :app_deployments do
     member do
       post :deploy

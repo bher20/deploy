@@ -1,0 +1,2 @@
+module DeploymentLogsHelper
+end

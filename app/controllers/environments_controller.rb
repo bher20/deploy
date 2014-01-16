@@ -20,7 +20,7 @@ class EnvironmentsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: environment }
+      format.json { render json: @environment }
     end
   end
 

@@ -1,0 +1,21 @@
+<h1>Listing <%= t('deployment_logs.deployment_logs') %></h1>
+  <p>
+  <table class="deployment_logs">
+    <tr>
+      <th><%= t('application.application') %></th>
+      <th>Deployment Date</th>
+      <th>Environment</th>
+      <th>Successful</th>
+      <th>Error Message</th>
+    </tr>
+    <% @deployment_logs.each do |deployment_log| %>
+        <tr id="deployment_log_<%= deployment_log.id %>">
+          <td><%= link_to deployment_log.app_deployment.application.name, deployment_log.app_deployment.application %></td>
+          <td><%= deployment_log.date.strftime(t('general.timestamp_to_str')) %></td>
+          <td><%= deployment_log.environment.name %></td>
+          <td><%= deployment_log.successful ? t('general.yes') : t('general.no') %></td>
+          <td><%= deployment_log.error_message ? deployment_log.error_message : t('general.not_applicable') %></td>
+        </tr>
+    <% end %>
+  </table>
+  </p>

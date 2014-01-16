@@ -79,10 +79,16 @@ class AppDeploymentsController < ApplicationController
     environment = Environment.find(params[:environment])
     @deployment_log = DeploymentLog.new(:app_deployment => @app_deployment, :environment => environment)
 
+    show_error_alert = false
+
     begin
       @app_deployment.deploy_application environment
 
       @deployment_log.successful = true
+
+    rescue InvalidDeployScript => e
+      @app_deployment.errors.add(:base, "Syntax error in deployment script #{@app_deployment.application.script_file_name}: #{e}")
+      show_error_alert = true
 
     rescue Git::GitExecuteError
       @app_deployment.errors.add(:base, t('app_deployments.no_new_files'))
@@ -97,12 +103,17 @@ class AppDeploymentsController < ApplicationController
       @deployment_log.error_message = t('app_deployments.invalid_package')
     end
 
+    if show_error_alert
+      respond_to do |format|
+        format.js { render 'failure_deployment.js.erb' }
+      end
+    else
+      @app_deployment.deployment_logs << @deployment_log
+      @app_deployment.save!
 
-    @app_deployment.deployment_logs << @deployment_log
-    @app_deployment.save!
-
-    respond_to do |format|
-      format.js { render 'success_deployment.js.erb' }
+      respond_to do |format|
+        format.js { render 'success_deployment.js.erb' }
+      end
     end
   end
 

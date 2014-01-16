@@ -14,11 +14,17 @@ class AppDeployment < ActiveRecord::Base
 
     deployment = Deployment.new environment.path, application.repository, self.version, application.name, Rails.logger
 
-    require_relative self.application.script.path
 
     time_stamp = Time.now.strftime("%Y-%m-%d%H_%M_%S")
     temp_dir = Rails.root.join('tmp', "#{time_stamp}-#{application.name}-archive")
-    deploy ({ :temp_dir => temp_dir, :deploy_file => self.deployment.path, :environment => environment.name })
+
+    begin
+      script = self.application.script.path
+      require_relative script
+      deploy ({ :temp_dir => temp_dir, :deploy_file => self.deployment.path, :environment => environment.name })
+    rescue Exception => e
+      raise InvalidDeployScript.new, e
+    end
 
     deployment.deploy temp_dir, Rails.root.join('tmp', application.name)
   end

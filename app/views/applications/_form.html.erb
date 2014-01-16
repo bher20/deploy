@@ -11,22 +11,6 @@
     <%= f.label :repository %><br />
     <%= f.text_field :repository %>
   </div>
-  <div class="field">
-    <%= f.label :environments %><br />
-    <table class="datatable">
-      <tr>
-        <th><%= t('application.environment') %></th>
-        <th><%= t('application.path') %></th>
-      </tr>
-
-      <% @application.environments.each do |e| %>
-          <tr>
-            <td><%= e[:name] %></td>
-            <td><%= e[:path] %></td>
-          </tr>
-      <% end %>
-    </table>
-  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

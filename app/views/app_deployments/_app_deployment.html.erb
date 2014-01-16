@@ -1,8 +1,8 @@
 <tr id="app_deployment_<%= app_deployment.id%>">
-  <td><%= link_to app_deployment.name, app_deployment %></td>
-  <td><%= app_deployment.path %></td>
+  <td><%= link_to app_deployment.version, app_deployment %></td>
+  <td><%= link_to app_deployment.deployment_file_name, app_deployment.deployment.url %></td>
   <td>
     <%= link_to t('general.delete'), [@application, app_deployment], :confirm => t('general.are_you_sure'),
-                :method => :delete %>
+                :method => :delete, :remote => true %>
   </td>
 <tr>

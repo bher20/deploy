@@ -8,6 +8,7 @@ en:
     path: "Path"
     deployment_script: "Deployment Script"
     repository: "Repository"
+    back_to_application: "Back to Application"
   general:
     editing: "Editing"
     delete: "Delete"
@@ -18,6 +19,9 @@ en:
     no: "No"
     timestamp_to_str: "%Y-%m-%d %H:%M:%S"
     not_applicable: "N/A"
+    edit: "Edit"
+    show: "Show"
+    created_on: "Created On"
   environment:
     name: "Name"
     path: "Path"
@@ -28,6 +32,7 @@ en:
     environments: "Environments"
     deploy: "Deploy"
     push_deployment: "Push Deployment"
+    last_deployment_file: "Last Deployment File"
   deploy:
     deploy: "Deploy"
   layouts:

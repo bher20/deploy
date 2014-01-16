@@ -7,14 +7,14 @@
   <b><%= t('environment.path') %></b>
   <%= @environment.path %>
   <br />
-  <b>Created On:</b>
-  <%= @environment.created_at.strftime("%m/%d/%Y %I:%M:%S %p") %>
+  <b><%= t('general.created_on') %>:</b>
+  <%= @environment.created_at.strftime(t('general.timestamp_to_str')) %>
   <br />
-  <b>Last Deployment File:</b>
-  <%= @environment %>
+  <b><%= t('environment.last_deployment_file') %>:</b>
+  <%= link_to @last_deployment_log.app_deployment.version, @last_deployment_log.app_deployment %>
 </div>
 <br />
 <br />
 
-<%= link_to 'Edit', edit_environment_path(@environment) %> |
-<%= link_to 'Back', @environment.application %>
+<%= link_to t('general.edit'), edit_environment_path(@environment) %> |
+<%= link_to t('application.back_to_application'), @environment.application %>

@@ -16,6 +16,7 @@ class EnvironmentsController < ApplicationController
   # GET /environments/1.json
   def show
     @environment = Environment.find(params[:id])
+    @last_deployment_log = @environment.deployment_logs.last
 
     respond_to do |format|
       format.html # index.html.erb

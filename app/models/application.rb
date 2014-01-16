@@ -7,4 +7,5 @@ class Application < ActiveRecord::Base
 
   has_many :environments
   has_many :app_deployments
+  accepts_nested_attributes_for :environments
 end

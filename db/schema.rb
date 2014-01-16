@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140115212133) do
+ActiveRecord::Schema.define(:version => 20140116182147) do
 
   create_table "app_deployments", :force => true do |t|
     t.string   "version"
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(:version => 20140115212133) do
     t.string   "script_content_type"
     t.integer  "script_file_size"
     t.datetime "script_updated_at"
+  end
+
+  create_table "deployment_logs", :force => true do |t|
+    t.datetime "date"
+    t.integer  "app_deployment_id"
+    t.integer  "environment_id"
+    t.boolean  "successful"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "error_message"
   end
 
   create_table "environments", :force => true do |t|

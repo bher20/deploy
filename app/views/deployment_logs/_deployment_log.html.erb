@@ -1,0 +1,6 @@
+<tr id="deployment_log_<%= deployment_log.id %>">
+  <td><%= deployment_log.date.strftime(t('general.timestamp_to_str')) %></td>
+  <td><%= deployment_log.environment.name %></td>
+  <td><%= deployment_log.successful ? t('general.yes') : t('general.no') %></td>
+  <td><%= deployment_log.error_message ? deployment_log.error_message : t('general.not_applicable') %></td>
+</tr>

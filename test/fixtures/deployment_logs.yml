@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  date: 2014-01-16 12:56:09
+  app_deployment_id: 1
+  environment_id: 1
+
+two:
+  date: 2014-01-16 12:56:09
+  app_deployment_id: 1
+  environment_id: 1

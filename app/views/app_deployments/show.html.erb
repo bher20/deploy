@@ -22,6 +22,21 @@
   <% end %>
 </p>
 
+<p>
+<h3>Deploy Logs into:</h3>
+<table class="deployment_logs">
+  <tr>
+    <th>Deployment Date</th>
+    <th>Environment</th>
+    <th>Successful</th>
+    <th>Error Message</th>
+  </tr>
+  <% @app_deployment.deployment_logs.each do |log| %>
+    <%= render log %>
+  <% end %>
+</table>
+</p>
+
 <br />
 <br />
 <%= link_to 'Edit', edit_app_deployment_path(@app_deployment) %> |

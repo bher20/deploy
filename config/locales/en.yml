@@ -14,6 +14,10 @@ en:
     are_you_sure: "Are you sure?"
     actions: "Actions"
     new: "New"
+    yes: "Yes"
+    no: "No"
+    timestamp_to_str: "%Y-%m-%d %H:%M:%S"
+    not_applicable: "N/A"
   environment:
     name: "Name"
     path: "Path"
@@ -34,4 +38,5 @@ en:
     deploy: "Deploy"
     deployments: "Deployments"
     archive: "Archive"
-    no_new_files: "No new files in deployment package, stopping deployment!"
+    no_new_files: "No new files in deployment package."
+    invalid_package: "Invalid Deployment Package Uploaded."

@@ -6,6 +6,7 @@ class AppDeployment < ActiveRecord::Base
   validates :deployment, :attachment_presence => true
 
   belongs_to :application
+  has_many :deployment_logs
 
 
   def deploy_application(environment)

@@ -87,15 +87,33 @@ class AppDeploymentsController < ApplicationController
 
   def deploy
     @app_deployment = AppDeployment.find(params[:id])
+    environment = Environment.find(params[:environment])
+    @deployment_log = DeploymentLog.new(:app_deployment => @app_deployment, :environment => environment)
 
     begin
-      @app_deployment.deploy_application Environment.find(params[:environment])
+      @app_deployment.deploy_application environment
+
+      @deployment_log.successful = true
 
     rescue Git::GitExecuteError
       @app_deployment.errors.add(:base, t('app_deployments.no_new_files'))
-      respond_to do |format|
-        format.js { render 'fail_deployment.js.erb' }
-      end
+
+      @deployment_log.successful = false
+      @deployment_log.error_message = t('app_deployments.no_new_files')
+
+    rescue Archive::Zip::UnzipError
+      @app_deployment.errors.add(:base, t('app_deployments.invalid_package'))
+
+      @deployment_log.successful = false
+      @deployment_log.error_message = t('app_deployments.invalid_package')
+    end
+
+
+    @app_deployment.deployment_logs << @deployment_log
+    @app_deployment.save!
+
+    respond_to do |format|
+      format.js { render 'success_deployment.js.erb' }
     end
   end
 

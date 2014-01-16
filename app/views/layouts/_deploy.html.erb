@@ -8,22 +8,15 @@
 </head>
 <body>
 <div id='header'>
-  <h1><%= link_to t('deploy.deploy'), root_path %></h1>
-  <!-- <span id='header_menu'>
-    <%# render 'applications/menu_items' %>
-    <%# render 'admin/menu_items' %>
-    <%# render 'devise/menu/registration_items' %>
-    <%# render 'devise/menu/login_items' %>
-  </span> -->
+  <%= render 'layouts/header' %>
 </div>
 <div id='main'>
-
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
   <%= yield %>
 </div>
 <div id='footer'>
-  <%= t('layouts.footer').html_safe %>
+  <%= render 'layouts/footer' %>
 </div>
 </body>
 </html>

@@ -31,7 +31,7 @@ en:
   deploy:
     deploy: "Deploy"
   layouts:
-    footer: A application deployment manager &copy; CGI Federal 2014
+    footer: An application deployment manager &copy; CGI Federal 2014
   app_deployments:
     version: "Version"
     path: "Path"

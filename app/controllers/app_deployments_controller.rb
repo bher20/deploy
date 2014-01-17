@@ -77,12 +77,13 @@ class AppDeploymentsController < ApplicationController
   def deploy
     @app_deployment = AppDeployment.find(params[:id])
     environment = Environment.find(params[:environment])
+    force = params[:force]
     @deployment_log = DeploymentLog.new(:app_deployment => @app_deployment, :environment => environment)
 
     show_error_alert = false
 
     begin
-      @app_deployment.deploy_application environment
+      @app_deployment.deploy_application environment, force
 
       @deployment_log.successful = true
 

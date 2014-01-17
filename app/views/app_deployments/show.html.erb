@@ -16,9 +16,11 @@
 </p>
 
 <p>
-  <h3>Deploy Update into:</h3>
+  <h3><%= t('environment.environments') %>:</h3>
   <% @application.environments.each do |e| %>
-    <%= link_to e.name, deploy_app_deployment_path(environment: e), :method => :post, :remote => true %><br />
+    <%= e.name %>
+    <%= link_to t('app_deployments.deploy'), deploy_app_deployment_path(environment: e, force: false), :method => :post, :remote => true %>
+    <%= link_to t('app_deployments.update_only'), deploy_app_deployment_path(environment: e, force: true), :method => :post, :remote => true %><br />
   <% end %>
 </p>
 

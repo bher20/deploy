@@ -10,6 +10,7 @@ en:
     repository: "Repository"
     back_to_application: "Back to Application"
     application: "Application"
+    applications: "Applications"
   general:
     editing: "Editing"
     delete: "Delete"
@@ -46,5 +47,6 @@ en:
     archive: "Archive"
     no_new_files: "No new files in deployment package."
     invalid_package: "Invalid Deployment Package Uploaded."
+    update_only: "Update Only"
   deployment_logs:
     deployment_logs: "Deployment Logs"

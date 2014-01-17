@@ -9,7 +9,7 @@ class AppDeployment < ActiveRecord::Base
   has_many :deployment_logs
 
 
-  def deploy_application(environment)
+  def deploy_application(environment, force = false)
     logger.debug "Deploying #{self.deployment_file_name} into #{environment.name} for #{application.name}."
 
     deployment = Deployment.new environment.path, application.repository, self.version, application.name, Rails.logger
@@ -26,6 +26,6 @@ class AppDeployment < ActiveRecord::Base
       raise InvalidDeployScript.new, e
     end
 
-    deployment.deploy temp_dir, Rails.root.join('tmp', application.name)
+    deployment.deploy temp_dir, Rails.root.join('tmp', application.name), force
   end
 end

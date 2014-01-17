@@ -1,0 +1,6 @@
+<% if !current_page?(deployment_logs_path) %>
+    <%= link_to t('deployment_logs.deployment_logs'), deployment_logs_path %> |
+<% end %>
+<% if !current_page?(root_url) && !current_page?(applications_path) %>
+    <%= link_to t('application.applications'), applications_path %> |
+<% end %>

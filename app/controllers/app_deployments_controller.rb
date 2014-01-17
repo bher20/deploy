@@ -1,4 +1,5 @@
 class AppDeploymentsController < ApplicationController
+  include ApplicationHelper
   before_filter :load_application, :only => [:new, :create]
 
   # GET /app_deployments/1
@@ -77,7 +78,7 @@ class AppDeploymentsController < ApplicationController
   def deploy
     @app_deployment = AppDeployment.find(params[:id])
     environment = Environment.find(params[:environment])
-    force = params[:force]
+    force = to_boolean(params[:force])
     @deployment_log = DeploymentLog.new(:app_deployment => @app_deployment, :environment => environment)
 
     show_error_alert = false
@@ -102,6 +103,12 @@ class AppDeploymentsController < ApplicationController
 
       @deployment_log.successful = false
       @deployment_log.error_message = t('app_deployments.invalid_package')
+
+    rescue InvalidVersion => e
+      @app_deployment.errors.add(:base, e.message)
+
+      @deployment_log.successful = false
+      @deployment_log.error_message = e.message
     end
 
     if show_error_alert

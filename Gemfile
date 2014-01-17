@@ -37,7 +37,7 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
-gem 'deployer', '> 0.0.3'
+gem 'deployer', '> 0.0.4'
 gem 'git'
 gem 'paperclip', '~> 3.0'
 gem 'archive-zip', '~> 0.6.0'

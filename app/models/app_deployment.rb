@@ -4,6 +4,8 @@ class AppDeployment < ActiveRecord::Base
   has_attached_file :deployment
 
   validates :deployment, :attachment_presence => true
+  validates_uniqueness_of :version, :scope => :application_id
+  validates :version, presence: true
 
   belongs_to :application
   has_many :deployment_logs
@@ -12,11 +14,11 @@ class AppDeployment < ActiveRecord::Base
   def deploy_application(environment, force = false)
     logger.debug "Deploying #{self.deployment_file_name} into #{environment.name} for #{application.name}."
 
-    deployment = Deployment.new environment.path, application.repository, self.version, application.name, Rails.logger
-
 
     time_stamp = Time.now.strftime("%Y-%m-%d%H_%M_%S")
     temp_dir = Rails.root.join('tmp', "#{time_stamp}-#{application.name}-archive")
+
+    deployment = Deployment.new environment.path, application.repository, self.version, application.name, Rails.logger, Rails.root.join('tmp', application.name)
 
     begin
       script = self.application.script.path
@@ -26,6 +28,10 @@ class AppDeployment < ActiveRecord::Base
       raise InvalidDeployScript.new, e
     end
 
-    deployment.deploy temp_dir, Rails.root.join('tmp', application.name), force
+    if !force || (force && deployment.version?(self.version))
+      deployment.deploy temp_dir, force
+    elsif force
+      raise InvalidVersion.new, "A deployment with the version #{self.version} does not exist."
+    end
   end
 end

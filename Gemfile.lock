@@ -43,7 +43,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
-    deployer (0.0.4)
+    deployer (0.0.5)
     erubis (2.7.0)
     execjs (2.0.2)
     git (1.2.6)
@@ -118,7 +118,7 @@ PLATFORMS
 DEPENDENCIES
   archive-zip (~> 0.6.0)
   coffee-rails (~> 3.2.1)
-  deployer (> 0.0.3)
+  deployer (> 0.0.4)
   git
   jquery-rails
   paperclip (~> 3.0)

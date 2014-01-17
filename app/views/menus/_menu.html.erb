@@ -4,3 +4,6 @@
 <% if !current_page?(root_url) && !current_page?(applications_path) %>
     <%= link_to t('application.applications'), applications_path %> |
 <% end %>
+
+<%= render 'devise/menu/registration_items' %>
+<%= render 'devise/menu/login_items' %>

@@ -1,4 +1,6 @@
 class DeploymentLogsController < ApplicationController
+  load_and_authorize_resource
+
   # GET /deployment_logs
   # GET /deployment_logs.json
   def index

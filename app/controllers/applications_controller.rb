@@ -1,4 +1,6 @@
 class ApplicationsController < ApplicationController
+  load_and_authorize_resource
+
   # GET /applications
   # GET /applications.json
   def index

@@ -1,4 +1,5 @@
 class AppDeploymentsController < ApplicationController
+  load_and_authorize_resource
   include ApplicationHelper
   before_filter :load_application, :only => [:new, :create]
 

@@ -55,6 +55,10 @@ a:hover {
 .notice { color: green; }
 .alert  { color: red; }
 
+.console {
+    border:thin solid gray;
+}
+
 #header, #main, #footer {
     width: 800px;
 }

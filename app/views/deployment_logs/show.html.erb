@@ -1,0 +1,31 @@
+<meta http-equiv="refresh" content="5" />
+
+<h1>Deployment Log for <%= @deployment_log.app_deployment.application.name %> Deployment <%= @deployment_log.app_deployment.version %></h1>
+
+<p>
+  <b>Application:</b>
+  <%= link_to @deployment_log.app_deployment.application.name, @application %>
+</p>
+
+<p>
+  <b>Environment:</b>
+  <%= @deployment_log.environment.name %>
+</p>
+
+
+<p>
+  <b>Version:</b>
+  <%= @deployment_log.app_deployment.version %>
+</p>
+
+<p>
+  <h3>Console:</h3>
+    <div class="console">
+        <% @deployment_log.log.each do |entry| %>
+            <%= entry %><br />
+        <% end %>
+    </div>
+</p>
+
+
+<%= link_to t('app_deployments.back_to_deployment'), @deployment_log.app_deployment %>

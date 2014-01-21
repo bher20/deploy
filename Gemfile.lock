@@ -1,8 +1,9 @@
 GIT
   remote: git://github.com/bher20/deployer.git
-  revision: 842ab5f047c45087d13917f396f94f2d498b48df
+  revision: 62e022a65a77a0b370d28718ef0c4303d76244b8
+  tag: v0.0.6
   specs:
-    deployer (0.0.5)
+    deployer (0.0.6)
 
 GIT
   remote: git://github.com/rweng/jquery-datatables-rails.git

@@ -52,6 +52,7 @@ en:
     success: "Successfully Deployed"
     queued: "Deployment Queued..."
     started: "Deployment started..."
+    back_to_deployment: "Back to Deployment"
   deployment_logs:
     deployment_logs: "Deployment Logs"
   user:

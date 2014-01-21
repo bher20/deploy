@@ -1,7 +1,6 @@
 <tr id="deployment_log_<%= deployment_log.id %>">
-  <td><%= deployment_log.date.strftime(t('general.timestamp_to_str')) %></td>
+  <td><%= link_to deployment_log.date.strftime(t('general.timestamp_to_str')), deployment_log %></td>
   <td><%= deployment_log.environment.name %></td>
   <td><%= deployment_log.successful == nil ? t('general.not_applicable') : (deployment_log.successful ? t('general.yes') : t('general.no')) %></td>
   <td><%= deployment_log.message %></td>
-  <td><%= deployment_log.log %></td>
 </tr>

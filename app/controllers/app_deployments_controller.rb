@@ -87,13 +87,14 @@ class AppDeploymentsController < ApplicationController
 
     @deployment_log.save
 
-
-    Delayed::Job.enqueue HookDeploymentJob.new(@app_deployment, @deployment_log, environment, force)
+    deployment_job = HookDeploymentJob.new(@app_deployment, @deployment_log, environment, force)
+    Delayed::Job.enqueue deployment_job
 
     @app_deployment.deployment_logs << @deployment_log
     @app_deployment.save!
 
     respond_to do |format|
+      format.html { redirect_to @deployment_log }
       format.js { render 'success_deployment.js.erb' }
     end
   end

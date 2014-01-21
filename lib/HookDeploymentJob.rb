@@ -1,5 +1,6 @@
 require 'stringio'
 require 'logger'
+
 class HookDeploymentJob
   def initialize (deployment, deployment_log, environment, force)
     @deployment = deployment
@@ -30,11 +31,6 @@ class HookDeploymentJob
 
   def after(job)
     @deployment_log.log.push(*@@stringIO.string.split("\n"))
-
-
-    system("echo 'StringIO:' >> /tmp/debug.out")
-    system("echo '#{@@stringIO.string}' >> /tmp/debug.out")
-
 
     @deployment_log.save!
 

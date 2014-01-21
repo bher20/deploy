@@ -1,0 +1,25 @@
+<%= form_for(@user, :url => admin_users_path) do |f| %>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, :autofocus => true %>
+    </div>
+    <div class="field">
+      <%= f.label :password %><br />
+      <%= f.password_field :password %>
+    </div>
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation %>
+    </div>
+    <div class="field">
+      <%= f.label :roles %>
+      <ul style="list-style-type:none;">
+          <% @roles.each do |role| %>
+              <li style="line-height:21px;"><%= role %><%= check_box_tag "user[roles][]", role, @user.roles.include?(role) %></li>
+          <% end %>
+      </ul>
+    </div>
+    <div class="actions">
+      <%= f.submit "Send me reset password instructions" %>
+    </div>
+<% end %>

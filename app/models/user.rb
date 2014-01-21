@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable,
+  devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :token_authenticatable, :confirmable,
          :lockable, :timeoutable
@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   include RoleModel
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :roles, :roles_mask
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :roles, :roles_mask, :id
   # attr_accessible :title, :body
 
   # optionally set the integer attribute to store the roles in,

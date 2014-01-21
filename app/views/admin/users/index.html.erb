@@ -1,0 +1,23 @@
+<h1>Listing <%= t('user.users') %>
+    <span class='actions'>
+      <%= link_to t('general.new'), new_admin_user_path, :id => 'new_admin_user_link' %>
+    </span>
+</h1>
+<table class="users">
+  <tr>
+    <th>Email Address</th>
+    <th>Created</th>
+    <th>Last Login</th>
+  </tr>
+  <% @users.each do |user| %>
+    <tr id="user_<%= user.id %>">
+        <td><%= link_to user.email, admin_user_path(user) %></td>
+        <td><%= user.created_at.strftime(t('general.timestamp_to_str')) %></td>
+        <td><%= user.last_sign_in_at ? user.last_sign_in_at.strftime(t('general.timestamp_to_str')) : t('general.not_applicable') %></td>
+        <td>
+            <%#= link_to t('general.delete'), user, :confirm => t('general.are_you_sure'),
+                  :method => :delete, :remote => true %>
+        </td>
+    <tr>
+  <% end %>
+</table>

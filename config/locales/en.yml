@@ -24,6 +24,7 @@ en:
     edit: "Edit"
     show: "Show"
     created_on: "Created On"
+    back: "Back"
   environment:
     name: "Name"
     path: "Path"
@@ -50,3 +51,7 @@ en:
     update_only: "Update Only"
   deployment_logs:
     deployment_logs: "Deployment Logs"
+  user:
+    users: "Users"
+    email: "Email Address"
+    user: "User"

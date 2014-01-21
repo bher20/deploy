@@ -1,5 +1,8 @@
 Deploy::Application.routes.draw do
   devise_for :users
+  namespace :admin do
+    resources :users,  :controllers => { :users => 'admin/users'}
+  end
 
   root :to => 'applications#index'
 
@@ -15,6 +18,8 @@ Deploy::Application.routes.draw do
     resources :environments
     resources :app_deployments
   end
+
+
 
 
   # The priority is based upon order of creation:

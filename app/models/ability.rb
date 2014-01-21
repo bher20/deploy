@@ -10,6 +10,8 @@ class Ability
     elsif user.has_role? :editor
       can :manage, [AppDeployment, Environment]
       can :read, [DeploymentLog, Application]
+    else
+      can :read, [User, Application]
     end
 
     # Define abilities for the passed in user here. For example:

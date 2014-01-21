@@ -49,6 +49,9 @@ en:
     no_new_files: "No new files in deployment package."
     invalid_package: "Invalid Deployment Package Uploaded."
     update_only: "Update Only"
+    success: "Successfully Deployed"
+    queued: "Deployment Queued..."
+    started: "Deployment started..."
   deployment_logs:
     deployment_logs: "Deployment Logs"
   user:

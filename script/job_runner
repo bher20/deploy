@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+require File.dirname(__FILE__) + '/../config/environment'
+
+1.times do |n|
+    worker = Delayed::Worker.new
+    worker.name = 'worker-' + n.to_s
+    worker.start
+end

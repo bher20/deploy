@@ -81,13 +81,18 @@ class AppDeploymentsController < ApplicationController
     environment = Environment.find(params[:environment])
     force = to_boolean(params[:force])
     @deployment_log = DeploymentLog.new(:app_deployment => @app_deployment, :environment => environment)
+    @deployment_log.message = t('app_deployments.queued')
+    @deployment_log.save
 
     show_error_alert = false
 
     begin
-      @app_deployment.deploy_application environment, force
 
-      @deployment_log.successful = true
+      Delayed::Job.enqueue HookDeploymentJob.new(@app_deployment, @deployment_log, environment, force)
+
+      #@app_deployment.deploy_application environment, force
+
+      #@deployment_log.successful = true
 
     rescue InvalidDeployScript => e
       @app_deployment.errors.add(:base, "Syntax error in deployment script #{@app_deployment.application.script_file_name}: #{e}")

@@ -1,4 +1,4 @@
-<% if current_user.has_role? :admin %>
+<% if current_user != nil && current_user.has_role?(:admin) %>
     <%= render 'menus/admin' %>
 <% end %>
 <% if !current_page?(deployment_logs_path) %>

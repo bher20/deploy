@@ -1,3 +1,6 @@
+<% if current_user.has_role? :admin %>
+    <%= render 'menus/admin' %>
+<% end %>
 <% if !current_page?(deployment_logs_path) %>
     <%= link_to t('deployment_logs.deployment_logs'), deployment_logs_path %> |
 <% end %>

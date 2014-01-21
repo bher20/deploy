@@ -3,4 +3,5 @@
   <td><%= deployment_log.environment.name %></td>
   <td><%= deployment_log.successful == nil ? t('general.not_applicable') : (deployment_log.successful ? t('general.yes') : t('general.no')) %></td>
   <td><%= deployment_log.message %></td>
+  <td><%= deployment_log.log %></td>
 </tr>

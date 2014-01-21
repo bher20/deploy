@@ -11,14 +11,14 @@ class AppDeployment < ActiveRecord::Base
   has_many :deployment_logs
 
 
-  def deploy_application(environment, force = false)
+  def deploy_application(environment, force = false, logger = Rails.logger)
     logger.debug "Deploying #{self.deployment_file_name} into #{environment.name} for #{application.name}."
 
 
     time_stamp = Time.now.strftime("%Y-%m-%d%H_%M_%S")
     temp_dir = Rails.root.join('tmp', "#{time_stamp}-#{application.name}-archive")
 
-    deployment = Deployment.new environment.path, application.repository, self.version, application.name, Rails.logger, Rails.root.join('tmp', application.name)
+    deployment = Deployment.new environment.path, application.repository, self.version, application.name, logger, Rails.root.join('tmp', application.name)
 
     begin
       script = self.application.script.path

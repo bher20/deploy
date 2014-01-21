@@ -12,6 +12,7 @@ class HookDeploymentJob < DeploymentJob
     #record_stat 'newsletter_job/start'
     deployment_log.successful = nil
     deployment_log.message = 'Deployment started...'
+    deployment_log.log.push('Deployment started...')
 
     deployment_log.save!
   end
@@ -24,15 +25,30 @@ class HookDeploymentJob < DeploymentJob
     puts 'QAPLA!'
     deployment_log.successful = true
     deployment_log.message = 'Successfully Deployed'
+    deployment_log.log.push('Successfully Deployed')
     deployment_log.date = Time.now
 
     deployment_log.save!
   end
 
   def error(job, exception)
+    #TODO: Clean up the exception message that gets set for the deployment_log object.
     puts 'ERROR!'
     deployment_log.successful = false
-    deployment_log.message = exception.message
+
+    case exception
+      when InvalidDeployScript
+        message = 'Syntax error in deployment script.'
+      when Git::GitExecuteError
+        message = 'No new files in deployment package.'
+      when Archive::Zip::UnzipError
+        message = 'Invalid Deployment Package Uploaded.'
+      else
+        message = exception.message
+    end
+
+    deployment_log.message = message
+    deployment_log.log.push(message)
     deployment_log.date = Time.now
 
     deployment_log.save!

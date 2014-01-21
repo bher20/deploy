@@ -82,6 +82,9 @@ class AppDeploymentsController < ApplicationController
     force = to_boolean(params[:force])
     @deployment_log = DeploymentLog.new(:app_deployment => @app_deployment, :environment => environment)
     @deployment_log.message = t('app_deployments.queued')
+    @deployment_log.log ||= Array.new
+    @deployment_log.log.push(t('app_deployments.queued'))
+
     @deployment_log.save
 
 

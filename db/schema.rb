@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140121155858) do
+ActiveRecord::Schema.define(:version => 20140121192658) do
 
   create_table "app_deployments", :force => true do |t|
     t.string   "version"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20140121155858) do
     t.datetime "updated_at",        :null => false
     t.string   "error_message"
     t.text     "message"
+    t.text     "log"
   end
 
   create_table "environments", :force => true do |t|

@@ -9,6 +9,9 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require jquery.ui.core
+ *= require jquery.ui.theme
+ *= require dataTables/src/demo_table_jui
  *= require_tree .
  *
  * CSS based on CSS supplied in Beginning Rails 3, Updated, 2010 Apress by Cloves Carneiro Jr. and Rida Al Barazi

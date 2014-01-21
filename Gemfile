@@ -46,3 +46,9 @@ gem 'cancan'
 gem 'role_model'
 gem 'delayed_job_active_record'
 gem 'daemons'
+group :assets do
+  gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+  gem 'jquery-ui-rails'
+end
+
+gem 'will_paginate'

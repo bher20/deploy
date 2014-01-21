@@ -4,25 +4,18 @@
     </span>
 </h1>
 
-<table>
+<table id="applications">
+  <thead>
   <tr>
     <th>Name</th>
     <th>Script</th>
     <th>Repository</th>
     <th>Actions</th>
-    <th></th>
-    <th></th>
   </tr>
-
-<% @applications.each do |application| %>
-  <tr>
-    <td><%= link_to application.name, application %></td>
-    <td><%= link_to application.script_file_name, application.script.url %></td>
-    <td><%= application.repository %></td>
-    <td>
-      <%= link_to 'Edit', edit_application_path(application) %>
-      <%= link_to 'Destroy', application, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </td>
-  </tr>
-<% end %>
+  </thead>
+  <tbody>
+  <% @applications.each do |application| %>
+    <%= render application %>
+  <% end %>
+  </tbody>
 </table>

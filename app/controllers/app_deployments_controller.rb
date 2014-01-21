@@ -84,50 +84,14 @@ class AppDeploymentsController < ApplicationController
     @deployment_log.message = t('app_deployments.queued')
     @deployment_log.save
 
-    show_error_alert = false
 
-    begin
+    Delayed::Job.enqueue HookDeploymentJob.new(@app_deployment, @deployment_log, environment, force)
 
-      Delayed::Job.enqueue HookDeploymentJob.new(@app_deployment, @deployment_log, environment, force)
+    @app_deployment.deployment_logs << @deployment_log
+    @app_deployment.save!
 
-      #@app_deployment.deploy_application environment, force
-
-      #@deployment_log.successful = true
-
-    rescue InvalidDeployScript => e
-      @app_deployment.errors.add(:base, "Syntax error in deployment script #{@app_deployment.application.script_file_name}: #{e}")
-      show_error_alert = true
-
-    rescue Git::GitExecuteError
-      @app_deployment.errors.add(:base, t('app_deployments.no_new_files'))
-
-      @deployment_log.successful = false
-      @deployment_log.error_message = t('app_deployments.no_new_files')
-
-    rescue Archive::Zip::UnzipError
-      @app_deployment.errors.add(:base, t('app_deployments.invalid_package'))
-
-      @deployment_log.successful = false
-      @deployment_log.error_message = t('app_deployments.invalid_package')
-
-    rescue InvalidVersion => e
-      @app_deployment.errors.add(:base, e.message)
-
-      @deployment_log.successful = false
-      @deployment_log.error_message = e.message
-    end
-
-    if show_error_alert
-      respond_to do |format|
-        format.js { render 'failure_deployment.js.erb' }
-      end
-    else
-      @app_deployment.deployment_logs << @deployment_log
-      @app_deployment.save!
-
-      respond_to do |format|
-        format.js { render 'success_deployment.js.erb' }
-      end
+    respond_to do |format|
+      format.js { render 'success_deployment.js.erb' }
     end
   end
 

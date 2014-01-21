@@ -26,16 +26,20 @@
 
 <p>
 <h3><%= t('deployment_logs.deployment_logs') %>:</h3>
-<table class="deployment_logs">
+<table id="deployment_logs">
+  <thead>
   <tr>
     <th>Deployment Date</th>
     <th>Environment</th>
     <th>Successful</th>
     <th>Message</th>
   </tr>
+  </thead>
+  <tbody>
   <% @app_deployment.deployment_logs.each do |log| %>
     <%= render log %>
   <% end %>
+  </tbody>
 </table>
 </p>
 
